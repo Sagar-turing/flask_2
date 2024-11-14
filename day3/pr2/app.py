@@ -15,7 +15,7 @@ class User(UserMixin):
 
 @app.route("/")
 def index():
-    return render_template('login/html')
+    return render_template('login.html')
 
 @login_manager.user_loader
 def user_loader(email):
