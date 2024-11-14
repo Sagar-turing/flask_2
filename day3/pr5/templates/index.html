@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+</head>
+<body>
+
+<h1>Product List</h1>
+<div id="productContainer"></div>
+
+<script>
+    async function fetchProducts() {
+        // Replace with your backend API URL
+        const response = await fetch('http://127.0.0.1:5000/api/products');
+        const products = await response.json();
+        displayProducts(products);
+    }
+
+    function displayProducts(products) {
+        const container = document.getElementById('productContainer');
+        container.innerHTML = ''; // Clear previous content
+
+        products.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.innerHTML = `
+                <h2>${product.name}</h2>
+                <p>Price: $${product.price}</p>
+                <button onclick="trackEvent('add_to_cart', ${product.id})">Add to Cart</button>
+                <hr>
+            `;
+            container.appendChild(productDiv);
+        });
+    }
+
+    function trackEvent(eventType, data) {
+        // Send data to backend
+        fetch('http://127.0.0.1:5000/api/track', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ eventType, data }),
+        })
+        .then(response => response.json())
+        .then(data => console.log('Event tracked:', data))
+        .catch(error => console.error('Error tracking event:', error));
+
+        // Call the appropriate function based on the event type
+        if (eventType === 'add_to_cart') {
+            addToCart(data);
+        }
+    }
+
+    function addToCart(productId) {
+        alert(`Product with ID ${productId} added to cart!`);
+    }
+
+    // Fetch products on page load
+    fetchProducts();
+</script>
+
+</body>
+</html>
