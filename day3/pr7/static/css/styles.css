@@ -1,0 +1,41 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+#text-to-type {
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 24px;
+    width: 80%;
+    max-width: 700px;
+}
+
+#user-input {
+    width: 80%;
+    max-width: 700px;
+    font-size: 24px;
+    padding: 10px;
+    margin: 20px auto;
+    display: block;
+}
+
+#result {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+#timer {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    #text-to-type,
+    #user-input {
+        width: 90%;
+        font-size: 20px;
+    }
+}
