@@ -1,0 +1,37 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#user-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+#result {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#typing-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+}
